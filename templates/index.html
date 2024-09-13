@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="container">
+        <div class="logo">
+            <img src="{{ banner_content.banner_photo.url }}" class="img-fluid" alt="{{ banner_content.title }}">
+        </div>
+        <div class="menu">
+            <div class="menu_block">
+                <div class="menu_block_item">Главная</div>
+                <div class="menu_block_item">Эко активизм</div>
+                <div class="menu_block_item">Новости</div>
+                <div class="menu_block_item">О нас</div>
+            </div>
+            <div class="menu_block">
+                <img src="{% static 'assets/icons/personIcon.svg' %}" alt="Profile Icon">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="banner">
+            <div class="banner_content container">
+                <h1>{{ banner_content.title }}</h1>
+                <p>{{ banner_content.description }}</p>
+            </div>
+        </section>
+        
+        <section class="kg_map container">
+            <div class="kg_map_title">
+                Эко активизм в разных <br> областях
+            </div>
+            <div class="kg_map_image">
+                <img src="{% static 'assets/images/kg_map.png' %}" alt="Map of Kyrgyzstan" onclick="openModal()">
+            </div>
+        </section>
+
+        <section class="news">
+            <div class="news_header container">
+                <h1>Новости</h1>
+                <div>
+                    Все <img src="{% static 'assets/icons/rightarrow.svg' %}" alt="Arrow">
+                </div>
+            </div>
+            <div class="news_body container">
+                <div class="news_body_item">
+                    <img src="{% static 'assets/images/newsimg1.png' %}" alt="News Image 1">
+                    <div class="news_body_item_wrap">
+                        Аналитика: Угольная пыль, вред не только от сжигания угля
+                        <div class="news_body_item_footer">
+                            <p>Подробнее</p>
+                            <p>85 Комментариев</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_body_item">
+                    <img src="{% static 'assets/images/news2.png' %}" alt="News Image 2">
+                    <div class="news_body_item_wrap">
+                        Аналитика: Угольная пыль, вред не только от сжигания угля
+                        <div class="news_body_item_footer">
+                            <p>Подробнее</p>
+                            <p>46 Комментариев</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="news_body_item">
+                    <img src="{% static 'assets/images/news3.png' %}" alt="News Image 3">
+                    <div class="news_body_item_wrap">
+                        Аналитика: Угольная пыль, вред не только от сжигания угля
+                        <div class="news_body_item_footer">
+                            <p>Подробнее</p>
+                            <p>75 Комментариев</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="sponsor">
+            <h1 class="sponsor_title container">Спонсоры</h1>
+            <div class="sponsor_wrap container">
+                <div class="sponsor_item">
+                    <img src="{% static 'assets/images/sponsor.png' %}" alt="Sponsor 1">
+                    <div class="sponsor_item_footer">Глобальный мобильный C2C маркетплейс</div>
+                </div>
+                <div class="sponsor_item">
+                    <img src="{% static 'assets/images/sponsor2.png' %}" alt="Sponsor 2">
+                    <div class="sponsor_item_footer">Глобальный мобильный C2C маркетплейс</div>
+                </div>
+                <div class="sponsor_item">
+                    <img src="{% static 'assets/images/sponsor3.png' %}" alt="Sponsor 3">
+                    <div class="sponsor_item_footer">Глобальный мобильный C2C маркетплейс</div>
+                </div>
+                <div class="sponsor_item">
+                    <img src="{% static 'assets/images/sponsor4.png' %}" alt="Sponsor 4">
+                    <div class="sponsor_item_footer">Глобальный мобильный C2C маркетплейс</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about container">
+            <div class="about_title">О нас</div>
+            <div class="about_body">
+                Наша миссия - создать эффективное и влиятельное ЭкоСообщество Кыргызстана, где эко-активисты, организации, инвесторы и общественность объединены для решения экологических проблем и содействия устойчивому развитию.
+            </div>
+        </section>
+
+        <section class="team container">
+            <div class="team_title">Наша команда</div>
+            <div class="team_body">
+                {% for member in team_members %}
+                <div class="team_item">
+                    <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+                    <div>
+                        <strong>{{ member.name }}</strong>
+                        <p>{{ member.position }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer_wrap container">
+            <div class="footer_block">
+                <div class="logo">
+                    <img src="{% static 'assets/images/whitelogo.png' %}" alt="White Logo">
+                    <p>"Экоединство Кыргызстана: <br> Вместе к Зелёному Будущему!"</p>
+                    <p>+996 551519651</p>
+                    <p>lordbawhee@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer_block">
+                <div class="footer_block_item">Главная</div>
+                <div class="footer_block_item">Эко активизм</div>
+                <div class="footer_block_item">Новости</div>
+                <div class="footer_block_item">О нас</div>
+                <div class="footer_block_item">Профиль</div>
+            </div>
+        </div>
+        <div class="line container"></div>
+        <p class="container" style="margin-top: 30px;">EcoQurultay eCommerce © 2023. All Rights Reserved</p>
+    </footer>
+
+    <div class="modal close" onclick="closeModal()">
+        <div class="modal_wrap close">
+            <div class="modal_wrap_header">Выберите нужное <br> вам подразделение</div>
+            <div class="modal_wrap_body">
+                <button>Организации</button>
+                <button>Волонтеры</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'assets/js/index.js' %}"></script>
+</body>
+
+</html>
